@@ -97,8 +97,11 @@ serchInput.addEventListener("input", () => {
       product.classList.remove("hidden");
       kata.classList.remove("hidden");
     } else {
-      product.classList.add("hidden"); 
+      product.classList.add("hidden");
       kata.classList.add("hidden");
     }
   });
-})
+});
+
+
+
