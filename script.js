@@ -1,4 +1,4 @@
-
+// ambil semua
 const cardBtn = document.getElementById('cardBtn');
 const cardModal = document.getElementById('cardModal');
 const closeCard = document.getElementById('closeCard');
@@ -6,11 +6,13 @@ let continueShop = document.getElementById('continueShop');
 const cart = [];
 const cartItems = document.getElementById('cartItems')
 const cartTotal = document.getElementById('cart-total');
-
+const popup = document.getElementById("alert");
+const removePopup = document.getElementById("popupBtn");
+// muculin keranjang
 cardBtn.addEventListener("click", () => {
   cardModal.classList.remove("hidden")
 });
-
+// tutup keranjang
 closeCard.addEventListener("click", () => {
   cardModal.classList.add("hidden")
 });
@@ -19,18 +21,28 @@ continueShop.addEventListener("click", () => {
   cardModal.classList.add("hidden")
 });
 
+// tutup popup
+removePopup.addEventListener("click", () => {
+  popup.classList.add("hidden");
+});
+
+
+// ambil produk 
 document.querySelectorAll(".add-to-card").forEach(btn => {
   btn.addEventListener("click", () => {
     const name = btn.dataset.name;
     const price = parseFloat(btn.dataset.price);
     const img = btn.dataset.img;
+    
 
     cart.push({ name, price, img });
     updateCard();
     console.log(cart);
+    popup.classList.remove("hidden");
   });
 });
 
+// tambah produk ke keranjang
 function updateCard() {
   cartItems.innerHTML = "";
   let total = 0;
@@ -52,11 +64,12 @@ function updateCard() {
   cartTotal.textContent = total.toFixed(2);
 }
 
+// remove produk di keranjang
 function removeItem(index) {
   cart.splice(index, 1);
   updateCard();
 }
-
+// fungsi checkout
 document.getElementById('checkoutBtn').addEventListener("click", () => {
 
   if (cart.length === 0) {
@@ -82,7 +95,7 @@ document.getElementById('checkoutBtn').addEventListener("click", () => {
 
 
 });
-
+// fungsi src
 const serchInput = document.getElementById('cari');
 const kata = document.getElementById('kata');
 
